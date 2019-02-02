@@ -2,7 +2,7 @@ from keras.datasets import mnist
 from keras import callbacks
 import numpy as np
 
-from vae import vae
+from vae import vae, dec
 
 # MNIST data
 (X_train, Y_train), (X_test, Y_test) = mnist.load_data()
@@ -16,3 +16,4 @@ tb = callbacks.TensorBoard(log_dir="./log", write_graph=True)
 vae.fit(x=X_train, y=X_train, batch_size=128, epochs=20, callbacks=[tb])
 
 vae.save("vae.h5")
+dec.save("dec.h5")
